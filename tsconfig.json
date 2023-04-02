@@ -1,25 +1,66 @@
 {
     "compilerOptions": {
+        // ES(JS) version to be compiled- "ES2015" recommended
         "target": "ES2015",
+
+        // Module system designation - "CommonJS", "AMD", "ESNext" >>>  I will use the latest version of the ECMAscript.
         "module": "ESNext",
+
+        // Module analysis method specification - "Node", "Classic" >>> The index file of any file can bring the function/variable to the import without specifying the path separately.
         "moduleResolution": "Node",
+
+        // ESM 모듈 방식 호환성 활성화 여부 >>> 
+        // commonJS 방식은 export default 와 같이 기본 export를 지원하지 않는다. js 에서는 import * as commonjs from './common'으로 가져와야 하는데 
+        // 매번 이렇게 import export를 할 때 다르게 설정해줘야하는 것이 매우 번거롭기에 true 값으로 하여 import commonjs form './common' 과 같은 방식으로 통합하여 쓸 수 있게 한다. 
+        // ESM 방식과 CommonJS 방식을 구분하지 않게 하는 것이다. >>> true
         "esModuleInterop": true,
+
+        // 모든 파일을 모듈로 컴파일, import 혹은 export 키워드 필수
+        // true 일 경우 파일에 import, export가 없을 시 error를 발생시킨다. 
+        "isolatedModules": false,
+
+        // 모듈 해석에 사용할 기준 경로 지정
+        "baseUrl": "./",
+
+        // 컴파일러가 참조할 타입 선언(d.ts)의 경로 지정
+        "typeRoots": ["./node_modules/@types"],
+
+        // 컴파일에서 사용할 라이브러리 지정 - "ESNext", "DOM"
         "lib": ["ESNext", "DOM"],
-        "strict": true
-    },
+
+        // 더 엄격한 타입 검색 활성화
+        "strict": true, 
+        // 밑의 내용들이 전부다 true로 바뀐다. 
+
+        // 암시적 any 타입 검사 활성화
+        // "noImplicitAny": false,
+
+        // 암시적 this 타입 검사 활성화
+        // "noImplicitThis": false,
+
+        // 엄격한 Nullish 타입 검사 활성화
+        // "strictNullChecks": false,
+
+        // 엄격한 함수의 매개변수 타입 검사 활성화
+        // "strictFunctionTypes": false,
+
+        // 엄격한 클래스의 속성 초기화 검사 활성화
+        // "strictPropertyInitialization": false,
+        
+        // 엄격한 Bind, Call, Apply 메소드의 인수 검사 활성화
+        // "strictBindCallApply": false
+    },  
+    // File path list to compile
     "include": [
         "src/**/*.ts"
     ],
+    // File path list to exclude the compilation
     "exclude": [
         "node_modules"
     ]
 }
-// target: typescript를 javascript의 2015 버전으로 변환하겠다. 
-// module: 에크마스크립트의 최신버전을 사용하겠다. 
-// moduleResolution: 모듈의 해석방식을 지정 어떤 경로를 작성할 때, 특정 폴더 안에 있는 index라는 이름을 가진 javascript파일을 생략하겠다. 
-// esModuleInterop: javascript의 에크마스크립트 모듈(ESM)과 Node.js의 commonjs 방식을 호환해서 전부다 사용할 수 있는 구조를 만든다.  
-// lib: typescript를 javascript를 컴파일 할 때, 내부적으로 사용해야하는 모듈들을 나열 
-// strict: typescript를 사용하는 의미를 부여 (안하면 쓸 이유가 없음)
+
+
 
 // include: 프로젝트의 어느부분에서 typescript를 찾을 수 있는지에 대해 경로지정한다. 
 // scr/**/*.ts: src 하위 파일의 모든 ts를 포함하겠다. 
